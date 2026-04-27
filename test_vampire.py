@@ -29,7 +29,7 @@ token = r.json()['token']
 headers = {'Authorization': 'Bearer ' + token}
 
 
-# 2. Creation d'un nouvel utilisateur (peut deja exister si script relance)
+# 2. Creation d'un nouvel utilisateur
 print('=== 2. REGISTER ===')
 r = requests.post(BASE_URL + '/register', json={
     'username': 'samuel',
@@ -94,7 +94,7 @@ r = requests.put(BASE_URL + '/vms/' + str(vm_id), headers=headers, json={
 afficher('Update VM', r)
 
 
-# 9. Power on (stopped -> running)
+# 9. Power on
 print('=== 9. POWER ON ===')
 r = requests.post(BASE_URL + '/vms/' + str(vm_id) + '/power_on', headers=headers)
 afficher('Power on', r)
@@ -112,7 +112,7 @@ r = requests.get(BASE_URL + '/vms/' + str(vm_id) + '/status', headers=headers)
 afficher('Status', r)
 
 
-# 12. Suspend (running -> suspended)
+# 12. Suspend
 print('=== 12. SUSPEND ===')
 r = requests.post(BASE_URL + '/vms/' + str(vm_id) + '/suspend', headers=headers)
 afficher('Suspend', r)
@@ -140,7 +140,7 @@ r = requests.post(BASE_URL + '/vms/' + str(vm_id) + '/migrate', headers=headers,
 afficher('Migration', r)
 
 
-# 16. Power off (suspended -> stopped)
+# 16. Power off
 print('=== 16. POWER OFF ===')
 r = requests.post(BASE_URL + '/vms/' + str(vm_id) + '/power_off', headers=headers)
 afficher('Power off', r)

@@ -1,6 +1,6 @@
 # VAMPIRE - API REST pour manager des VM
 
-Projet M1 SRC - ESGI by SAMUEL
+Projet M1 SRC - by SAMUEL
 
 ## Installation
 

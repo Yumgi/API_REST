@@ -1,6 +1,6 @@
 # vampire.py
 # API REST pour gerer des VM - projet VAMPIRE
-# M1 SRC ESGI
+# M1 SRC ESGI by SAMUEL
 
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
