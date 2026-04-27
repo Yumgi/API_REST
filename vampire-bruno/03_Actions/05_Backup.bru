@@ -1,0 +1,21 @@
+meta {
+  name: 05 Backup
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api/vms/{{vm_id}}/backup
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+tests {
+  test("Status 202", function() {
+    expect(res.status).to.equal(202);
+  });
+}

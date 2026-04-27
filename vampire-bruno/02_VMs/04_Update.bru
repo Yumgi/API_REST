@@ -1,0 +1,32 @@
+meta {
+  name: 04 Update VM
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api/vms/{{vm_id}}
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "cpus": 4,
+    "ram_gb": 8,
+    "description": "VM mise a jour depuis Bruno"
+  }
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  test("CPUs mis a jour", function() {
+    expect(res.body.vm.cpus).to.equal(4);
+  });
+}

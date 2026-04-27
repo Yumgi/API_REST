@@ -1,0 +1,24 @@
+meta {
+  name: 01 Power on
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/vms/{{vm_id}}/power_on
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  test("Status running", function() {
+    expect(res.body.status).to.equal("running");
+  });
+}

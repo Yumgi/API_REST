@@ -1,0 +1,24 @@
+meta {
+  name: 03 Login KO mauvais mdp
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "admin",
+    "password": "mauvais_mdp"
+  }
+}
+
+tests {
+  test("Doit refuser avec 401", function() {
+    expect(res.status).to.equal(401);
+  });
+}

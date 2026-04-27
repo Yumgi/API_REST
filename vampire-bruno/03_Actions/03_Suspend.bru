@@ -1,0 +1,24 @@
+meta {
+  name: 03 Suspend
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/vms/{{vm_id}}/suspend
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  test("Status suspended", function() {
+    expect(res.body.status).to.equal("suspended");
+  });
+}

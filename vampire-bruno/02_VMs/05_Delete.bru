@@ -1,0 +1,21 @@
+meta {
+  name: 05 Delete VM
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/api/vms/{{vm_id}}
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.status).to.equal(200);
+  });
+}

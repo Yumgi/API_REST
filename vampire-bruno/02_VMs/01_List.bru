@@ -1,0 +1,24 @@
+meta {
+  name: 01 Liste des VMs
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/vms
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  test("Tableau de VMs", function() {
+    expect(res.body.vms).to.be.an("array");
+  });
+}

@@ -1,0 +1,25 @@
+meta {
+  name: 03 Recherche par nom
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/vms/search?name=LINUX
+  body: none
+  auth: none
+}
+
+params:query {
+  name: LINUX
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.status).to.equal(200);
+  });
+}

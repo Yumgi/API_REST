@@ -1,0 +1,27 @@
+meta {
+  name: 06 Migration
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api/vms/{{vm_id}}/migrate
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "target_hypervisor": "qemu+kvm://172.17.3.99"
+  }
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.status).to.equal(200);
+  });
+}

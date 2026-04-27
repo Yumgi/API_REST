@@ -1,0 +1,43 @@
+meta {
+  name: 02 Creation VM
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/vms
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "name": "TEST_VM_001",
+    "title": "VM de test",
+    "description": "VM creee depuis Bruno",
+    "cpus": 2,
+    "ram_gb": 4,
+    "disks": {"disk_1": 20, "disk_2": 50},
+    "nics": ["NIC_1"],
+    "hypervisor": "qemu+kvm://172.17.3.4"
+  }
+}
+
+script:post-response {
+  if (res.status === 201) {
+    bru.setEnvVar("vm_id", res.body.vm.id);
+  }
+}
+
+tests {
+  test("Status 201", function() {
+    expect(res.status).to.equal(201);
+  });
+  test("VM id recu", function() {
+    expect(res.body.vm.id).to.be.a("number");
+  });
+}

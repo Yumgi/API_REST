@@ -1,0 +1,27 @@
+meta {
+  name: 04 Snapshot
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/vms/{{vm_id}}/snapshot
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "snapshot_name": "snap_test_bruno"
+  }
+}
+
+tests {
+  test("Status 201", function() {
+    expect(res.status).to.equal(201);
+  });
+}

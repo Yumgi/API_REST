@@ -1,0 +1,24 @@
+meta {
+  name: 02 Register samuel
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "samuel",
+    "password": "test123"
+  }
+}
+
+tests {
+  test("Status 201 ou 409 si deja cree", function() {
+    expect([201, 409]).to.include(res.status);
+  });
+}

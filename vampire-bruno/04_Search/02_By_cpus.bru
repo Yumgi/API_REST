@@ -1,0 +1,25 @@
+meta {
+  name: 02 Recherche par CPUs
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/vms/search?cpus=2
+  body: none
+  auth: none
+}
+
+params:query {
+  cpus: 2
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.status).to.equal(200);
+  });
+}

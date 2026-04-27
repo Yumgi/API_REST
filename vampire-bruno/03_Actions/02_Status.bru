@@ -1,0 +1,21 @@
+meta {
+  name: 02 Status
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/vms/{{vm_id}}/status
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+tests {
+  test("Status 200", function() {
+    expect(res.status).to.equal(200);
+  });
+}
